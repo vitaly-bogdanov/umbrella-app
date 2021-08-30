@@ -1,13 +1,10 @@
-import express from 'express';
+
 import dotenv from 'dotenv';
 
-import { router } from './src/core/api';
+import { startMaster } from './root.master';
+import { startWorker } from './root.worker';
 
-const app = express();
-const port = 3000;
+dotenv.config({ path: `./.env.${process.env.NODE_ENV}` });
 
-app.use(router);
-
-app.listen(port, () => {
-  console.log(`Timezones by location application is running on port ${port}.`);
-});
+startMaster();
+startWorker();
