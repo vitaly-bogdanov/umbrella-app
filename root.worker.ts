@@ -3,7 +3,7 @@ import http from 'http';
 
 import { app } from './root.app.js';
 
-export const startWorker = () => {
+export const startWorker = (): void => {
   if (cluster.isWorker) {
     http
       .createServer(app)
