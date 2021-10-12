@@ -8,10 +8,11 @@ import {
   updateHandler,
   destroyHandler,
 } from './category.handler';
+import { exeptionCatchService } from '../../common/exeption';
 
-export const categoryRouter = new Router()
-  .get(CATEGORY_PATH, indexHandler)
-  .get(`${CATEGORY_PATH}/:id`, viewHandler)
-  .post(CATEGORY_PATH, createHandler)
-  .put(`${CATEGORY_PATH}/:id`, updateHandler)
-  .delete(`${CATEGORY_PATH}/:id`, destroyHandler);
+export const categoryRouter: Router = new Router()
+  .get(CATEGORY_PATH, exeptionCatchService(indexHandler))
+  .get(`${CATEGORY_PATH}/:id`, exeptionCatchService(viewHandler))
+  .post(CATEGORY_PATH, exeptionCatchService(createHandler))
+  .put(`${CATEGORY_PATH}/:id`, exeptionCatchService(updateHandler))
+  .delete(`${CATEGORY_PATH}/:id`, exeptionCatchService(destroyHandler));

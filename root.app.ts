@@ -1,10 +1,10 @@
-import express, { json } from 'express';
+import express, { json, Express } from 'express';
 import hemlet from 'helmet';
 import cors from 'cors';
 
 import { router } from './src/core/api';
 
-export const app = express()
+export const app: Express = express()
   .use(hemlet())
   .use(cors())
   .use(json())

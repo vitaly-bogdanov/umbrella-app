@@ -1,0 +1,1 @@
+export { exeptionCatchService } from './exeption.service';
