@@ -1,6 +1,13 @@
-datasource db {
+datasource postgresql {
   provider = "postgresql"
+  url      = env("DATABASE_URL_POSTGRES")
+  models   = [Category]
+}
+
+datasource mongodb {
+  provider = "mongodb"
   url      = env("DATABASE_URL")
+  models   = [Product]
 }
 
 generator client {

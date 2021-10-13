@@ -10,7 +10,7 @@ import {
 } from './category.handler';
 import { exeptionCatchService } from '../../common/exeption';
 
-export const categoryRouter: Router = new Router()
+export const categoryRouter: Router = Router()
   .get(CATEGORY_PATH, exeptionCatchService(indexHandler))
   .get(`${CATEGORY_PATH}/:id`, exeptionCatchService(viewHandler))
   .post(CATEGORY_PATH, exeptionCatchService(createHandler))
