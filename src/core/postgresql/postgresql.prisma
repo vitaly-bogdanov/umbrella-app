@@ -4,12 +4,6 @@ datasource postgresql {
   models   = [Category]
 }
 
-datasource mongodb {
-  provider = "mongodb"
-  url      = env("DATABASE_URL")
-  models   = [Product]
-}
-
 generator client {
   provider = "prisma-client-js"
 }
