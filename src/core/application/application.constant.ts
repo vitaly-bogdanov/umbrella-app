@@ -1,1 +1,1 @@
-export const CORS_CONFIG = {};
+export const CORS = {};

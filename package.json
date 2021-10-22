@@ -7,34 +7,18 @@
     "buld": "tsc",
     "start:dev": "dotenv -e .env.dev tsc --watch & nodemon ./dist/index.js",
     "start:prod": "dotenv -e .env.prod tsc & node ./dist/index.js",
-    "env:dev": "dotenv -e .env.dev",
-    "env:prod": "dotenv -e .env.prod",
-    "env:test": "dotenv -e .env.test",
-    "db:migrate": "npm run env:dev -- npx prisma migrate dev --name",
-    "db:migrate:dev:rolled-back": "npm run env:dev -- npx prisma migrate resolve --rolled-back",
-    "db:migrate:prod:rolled-back": "npm run env:prod -- npx prisma migrate resolve --rolled-back",
-    "db:migrate:test:rolled-back": "npm run env:test -- npx prisma migrate resolve --rolled-back",
-    "db:migrate:dev:applied": "npm run env:dev -- npx prisma migrate resolve --applied",
-    "db:migrate:prod:applied": "npm run env:prod -- npx prisma migrate resolve --applied",
-    "db:migrate:test:applied": "npm run env:test -- npx prisma migrate resolve --applied",
-    "db:reset:dev": "npm run env:dev -- npx prisma migrate reset",
-    "db:reset:test": "npm run env:test -- npx prisma migrate reset",
-    "db:seed:dev": "",
-    "db:seed:test": "",
-    "db:studio:dev": "npm run env:dev -- npx prisma studio",
-    "db:studio:test": "npm run env:test -- npx prisma studio",
-    "db:deploy:dev": "npm run env:dev -- npx prisma migrate deploy",
-    "db:deploy:prod": "npm run env:prod -- npx prisma migrate deploy",
-    "db:deploy:test": "npm run env:test -- npx prisma migrate deploy",
     "test:watch": "npm run env:test -- jest --watch",
     "test:debug": "dotenv -e ./.env.test",
     "format:lint": "",
-    "format:pretty": ""
+    "format:pretty": "",
+    "credentials:init": "npx node-credentials init --path ./src/environment/production.json",
+    "credentials:encrypt": "npx node-credentials encrypt --path ./src/environment/production.json",
+    "credentials:decrypt": "npx node-credentials decrypt --path ./src/environment/production.json",
+    "credentials:edit": "EDITOR=nano npx node-credentials edit"
   },
   "prisma": {
     "schema": [
-      "src/core/postgresql/postgresql.prisma",
-      "src/core/mongodb/mongodb.prisma"
+      "src/core/database/database.prisma"
     ]
   },
   "author": "",
@@ -44,6 +28,7 @@
     "@types/express": "^4.17.13",
     "@types/express-validator": "^3.0.0",
     "@types/node": "^16.6.2",
+    "@types/redis": "^2.8.32",
     "@typescript-eslint/eslint-plugin": "^4.29.2",
     "@typescript-eslint/parser": "^4.29.2",
     "eslint": "^7.32.0",
@@ -64,6 +49,8 @@
     "express-validator": "^6.12.1",
     "helmet": "^4.6.0",
     "log4js": "^6.3.0",
-    "pm2": "^5.1.2"
+    "node-credentials": "^1.3.1",
+    "pm2": "^5.1.2",
+    "redis": "^3.1.2"
   }
 }

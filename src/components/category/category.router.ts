@@ -8,7 +8,7 @@ import {
   updateHandler,
   destroyHandler,
 } from './category.handler';
-import { exeptionCatchService } from '../../common/exeption';
+import { exeptionCatchService } from '../../common/error';
 
 export const categoryRouter: Router = Router()
   .get(CATEGORY_PATH, exeptionCatchService(indexHandler))
