@@ -3,9 +3,11 @@ import hemlet from 'helmet';
 import cors from 'cors';
 
 import { router } from './application.router';
+import { errorHandlerMiddleware } from '../../common/error';
 
-export const createApllicationService = (): Application => express()
+export const createAplicationService = (): Application => express()
   .use(hemlet())
   .use(cors())
   .use(json())
-  .use(router);
+  .use(router)
+  .use(errorHandlerMiddleware);

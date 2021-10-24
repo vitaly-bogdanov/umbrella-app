@@ -1,10 +1,14 @@
-import { startServer } from './root.server';
+import { startHttpServerService } from './src/core/http-server';
+import { createAplicationService } from './src/core/application';
+import { connectDatabaseService } from './src/core/database';
 
 (async () => {
   try {
-    startServer();
+    const application = createAplicationService();
+    await connectDatabaseService();
+    startHttpServerService(application);
   } catch (error) {
-
+    console.log(error.message);
   }
 })();
 

@@ -5,21 +5,18 @@
   "main": "index.js",
   "scripts": {
     "buld": "tsc",
-    "start:dev": "dotenv -e .env.dev tsc --watch & nodemon ./dist/index.js",
-    "start:prod": "dotenv -e .env.prod tsc & node ./dist/index.js",
-    "test:watch": "npm run env:test -- jest --watch",
-    "test:debug": "dotenv -e ./.env.test",
+    "start:prod": "tsc & NODE_CREDENTIALS_ENV=PRODUCTION node ./dist/index.js",
+    "start:dev": "tsc --watch & NODE_CREDENTIALS_ENV=DEVELOPMENT nodemon ./dist/index.js",
+    "start:test": "NODE_CREDENTIALS_ENV=TEST jest --watch",
     "format:lint": "",
     "format:pretty": "",
-    "credentials:init": "npx node-credentials init --path ./src/environment/production.json",
-    "credentials:encrypt": "npx node-credentials encrypt --path ./src/environment/production.json",
-    "credentials:decrypt": "npx node-credentials decrypt --path ./src/environment/production.json",
+    "credentials:init": "npx node-credentials init --path ./credentials.json",
+    "credentials:encrypt": "npx node-credentials encrypt --path ./credentials.json",
+    "credentials:decrypt": "npx node-credentials decrypt --path ./credentials.json",
     "credentials:edit": "EDITOR=nano npx node-credentials edit"
   },
   "prisma": {
-    "schema": [
-      "src/core/database/database.prisma"
-    ]
+    "schema": "./src/core/database/database.prisma"
   },
   "author": "",
   "license": "ISC",

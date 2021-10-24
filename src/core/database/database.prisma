@@ -1,8 +1,51 @@
-datasource mongodb {
-  provider = "mongodb"
-  url      = env("DATABASE_URL")
-}
-
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["mongoDb"]
+}
+
+model Product {
+  id         String @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  slug       String @unique
+  title      String
+  body       String
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId String
+}
+
+model Category {
+  id       String @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  slug     String @unique
+  title    String
+  products Product[]
+}
+
+model Order {
+  id           String @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  slug         String @unique
+  sum          Float
+  address      String
+  phone        String
+  postIndex    Int
+  name         String
+  lastname     String
+  patronymic   String
+  orderProduct OrderProduct[]
+}
+
+model OrderProduct {
+  count   Int
+  product Product
+
+
+}
+
+model Admin {
+  id    String @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  name  String
+  role  AdminRole @default(MANAGER)
+}
+
+enum AdminRole {
+  SUPER
+  MANAGER
 }

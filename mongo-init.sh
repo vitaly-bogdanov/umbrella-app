@@ -2,38 +2,38 @@
 set -e
 
 mongo <<EOF
-  use $MONGO_INITDB_DATABASE
+  use $MONGO_PROD_DATABASE
   db.createUser({
-    user: '$MONGO_INITDB_USERNAME',
-    pwd: '$MONGO_INITDB_PASSWORD',
+    user: '$MONGO_PROD_USERNAME',
+    pwd: '$MONGO_PROD_PASSWORD',
     roles: [
       {
         role: 'readWrite',
-        db: '$MONGO_INITDB_DATABASE',
+        db: '$MONGO_PROD_DATABASE',
       },
     ],
   })
 
-  use $MONGO_INITDB_DATABASE
+  use $MONGO_DEV_DATABASE
   db.createUser({
-    user: '$MONGO_INITDB_USERNAME',
-    pwd: '$MONGO_INITDB_PASSWORD',
+    user: '$MONGO_DEV_USERNAME',
+    pwd: '$MONGO_DEV_PASSWORD',
     roles: [
       {
         role: 'readWrite',
-        db: '$MONGO_INITDB_DATABASE',
+        db: '$MONGO_DEV_DATABASE',
       },
     ],
   })
 
-  use $MONGO_INITDB_DATABASE
+  use $MONGO_TEST_DATABASE
   db.createUser({
-    user: '$MONGO_INITDB_USERNAME',
-    pwd: '$MONGO_INITDB_PASSWORD',
+    user: '$MONGO_TEST_USERNAME',
+    pwd: '$MONGO_TEST_PASSWORD',
     roles: [
       {
         role: 'readWrite',
-        db: '$MONGO_INITDB_DATABASE',
+        db: '$MONGO_TEST_DATABASE',
       },
     ],
   })

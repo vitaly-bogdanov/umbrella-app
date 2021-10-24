@@ -1,1 +1,2 @@
-export { exeptionCatchService } from './error.service';
+export { errorService } from './error.service';
+export { errorHandlerMiddleware } from './error.middleware';

@@ -6,8 +6,16 @@ services:
     restart: always
     command: mongod --serviceExecutor adaptive
     ports:
-      - 1001:27017
-    env_file: 
-      - .env.dev
+      - 27017:27017
+    environment:
+      MONGO_PROD_DATABASE: "example_prod"
+      MONGO_PROD_USERNAME: "example_prod"
+      MONGO_PROD_PASSWORD: "example_prod"
+      MONGO_DEV_DATABASE: "example_dev"
+      MONGO_DEV_USERNAME: "example_dev"
+      MONGO_DEV_PASSWORD: "example_dev"
+      MONGO_TEST_DATABASE: "example_test"
+      MONGO_TEST_USERNAME: "example_test"
+      MONGO_TEST_PASSWORD: "example_test"
     volumes:
       - ./mongo-init.sh:/docker-entrypoint-initdb.d/mongo-init.sh:ro

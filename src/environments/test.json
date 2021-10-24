@@ -1,7 +1,0 @@
-{
-  "DATABASE": {
-    "NAME": "test-db",
-    "USER": "test-user",
-    "PASSWORD": "test-password"
-  }
-}
