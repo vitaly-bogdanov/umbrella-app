@@ -4,7 +4,6 @@
   "description": "Example umbrella app arch on express",
   "main": "index.js",
   "scripts": {
-    "buld": "tsc",
     "start:prod": "tsc & NODE_CREDENTIALS_ENV=PRODUCTION node ./dist/index.js",
     "start:dev": "tsc --watch & NODE_CREDENTIALS_ENV=DEVELOPMENT nodemon ./dist/index.js",
     "start:test": "NODE_CREDENTIALS_ENV=TEST jest --watch",
