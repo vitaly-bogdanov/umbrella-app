@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 
 import { ApiError } from './error.constant';
+import { STATUS_CODE } from '../http-response';
 
 export const errorHandlerMiddleware = (
   error: Error,
@@ -13,7 +14,7 @@ export const errorHandlerMiddleware = (
       .json({ message: error.message });
   } else {
     response
-      .status(500)
+      .status(STATUS_CODE.INTERNAL_ERROR)
       .json({ message: 'Непредвиденная ошибка' });
   }
 };
