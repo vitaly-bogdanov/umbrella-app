@@ -4,24 +4,28 @@ generator client {
 }
 
 model Product {
-  id         String @id @default(dbgenerated()) @map("_id") @db.ObjectId
-  slug       String @unique
-  title      String
+  id         String    @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  slug       String    @unique
+  title      String    @unique
   body       String
-  category   Category @relation(fields: [categoryId], references: [id])
+  category   Category  @relation(fields: [categoryId], references: [id])
   categoryId String
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
 }
 
 model Category {
-  id       String @id @default(dbgenerated()) @map("_id") @db.ObjectId
-  slug     String @unique
-  title    String
-  products Product[]
+  id        String    @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  slug      String    @unique
+  title     String    @unique
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
 model Order {
-  id           String @id @default(dbgenerated()) @map("_id") @db.ObjectId
-  slug         String @unique
+  id           String         @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  slug         String         @unique
   sum          Float
   address      String
   phone        String
@@ -29,7 +33,10 @@ model Order {
   name         String
   lastname     String
   patronymic   String
+  email        String
   orderProduct OrderProduct[]
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
 }
 
 model OrderProduct {
@@ -40,8 +47,8 @@ model OrderProduct {
 }
 
 model Admin {
-  id    String @id @default(dbgenerated()) @map("_id") @db.ObjectId
-  name  String
+  id    String    @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  name  String    @unique
   role  AdminRole @default(MANAGER)
 }
 
