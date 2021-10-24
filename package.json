@@ -12,7 +12,8 @@
     "credentials:init": "npx node-credentials init --path ./credentials.json",
     "credentials:encrypt": "npx node-credentials encrypt --path ./credentials.json",
     "credentials:decrypt": "npx node-credentials decrypt --path ./credentials.json",
-    "credentials:edit": "EDITOR=nano npx node-credentials edit"
+    "credentials:edit": "EDITOR=nano npx node-credentials edit",
+    "console": "node ./dist/src/core/console"
   },
   "prisma": {
     "schema": "./src/core/database/database.prisma"
