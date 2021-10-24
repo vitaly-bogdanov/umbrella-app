@@ -1,4 +1,4 @@
-import { connectDatabaseService } from '../database';
+import { connectDatabaseService, disconnectDatabaseService } from '../database';
 
 (async () => {
   try {
@@ -9,3 +9,5 @@ import { connectDatabaseService } from '../database';
     console.log(error);
   }
 })();
+
+process.on('exit', () => disconnectDatabaseService());
